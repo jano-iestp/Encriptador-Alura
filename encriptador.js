@@ -16,14 +16,13 @@ const llaves = [
   ["u", "ufat"],
 ];
 
-// Aquí agregas la función de validación
+// Función de validación
 function validarMensaje(mensaje) {
   const regex = /^[a-z\s]*$/; // Solo letras minúsculas y espacios
   return regex.test(mensaje); // Retorna true si el mensaje es válido
 }
 
-
-//Funcion para encriptar
+// Función para encriptar
 function ecriptarmensaje(mensaje) {
   let mensajeEncriptado = "";
   for (let i = 0; i < mensaje.length; i++) {
@@ -40,7 +39,8 @@ function ecriptarmensaje(mensaje) {
 
   return mensajeEncriptado;
 }
-// function  para desencriptar
+
+// Función para desencriptar
 function desencriptarMensaje(mensaje) {
   let mensajeDesencriptado = mensaje;
   for (let i = 0; i < llaves.length; i++) {
@@ -49,14 +49,16 @@ function desencriptarMensaje(mensaje) {
   }
   return mensajeDesencriptado; // Devuelve el mensaje desencriptado
 }
-//Ocultar elementos dinamicamente
+
+// Ocultar elementos dinámicamente
 textArea.addEventListener("input", (e) => {
   imagenMuneco.style.display = "none";
   loaderBatman.classList.remove("hidden");
   resultadoTitulo.textContent = "Capturando Mensaje.";
   resultadoText.textContent = "";
 });
-//Funcion del boton encriptar
+
+// Función del botón encriptar
 botonEncriptar.addEventListener("click", (e) => {
   e.preventDefault();
   let mensaje = textArea.value.toLowerCase();
@@ -73,6 +75,7 @@ botonEncriptar.addEventListener("click", (e) => {
   resultadoTitulo.textContent = "El resultado es:";
 });
 
+// Función del botón desencriptar
 botonDesencriptar[1].addEventListener("click", (e) => {
   e.preventDefault();
   let mensaje = textArea.value.toLowerCase();
@@ -89,14 +92,14 @@ botonDesencriptar[1].addEventListener("click", (e) => {
   botonCopiar.classList.remove("hidden");
 });
 
-
-botonCopiar.addEventListener('click', ()=>{
+// Función del botón copiar
+botonCopiar.addEventListener('click', () => {
     let textoCopiado = resultadoText.textContent;
-    navigator.clipboard.writeText(textoCopiado).then(()=> {
+    navigator.clipboard.writeText(textoCopiado).then(() => {
         imagenMuneco.style.display = "block";
         loaderBatman.classList.add("hidden");
-        resultadoTitulo.textContent = "El texto se copio";
+        resultadoTitulo.textContent = "El texto se copió";
         botonCopiar.classList.add("hidden");
-        resultadoText.textContent = ""
-    })
+        resultadoText.textContent = "";
+    });
 });
