@@ -18,8 +18,24 @@ const llaves = [
 
 // Aquí agregas la función de validación
 function validarMensaje(mensaje) {
-  const regex = /^[a-z\s]*$/; // Solo letras minúsculas y espacios
-  return regex.test(mensaje); // Retorna true si el mensaje es válido
+  if (textResult.length === 0 || /^\s+$/.test(textResult)) {
+    notification(
+      "El campo de texto esta vacio, Escribe una palabra",
+      "images/icon-head-lose.svg"
+    );
+  } else if (/[^a-z ]/.test(textResult)) {
+    notification(
+      "Solo se permiten letras minusculas y sin acento",
+      "images/icon-head-lose.svg"
+    );
+  } else {
+    textBox.classList.remove("disabled");
+    alertMessage.textContent = "";
+  }
+
+  document.getElementById("text-result").innerHTML = textResult;
+  inputText.value = "";
+  inputText.focus();
 }
 
 //Funcion para encriptar
