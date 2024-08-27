@@ -61,31 +61,35 @@ textArea.addEventListener("input", (e) => {
 // Función del botón encriptar
 botonEncriptar.addEventListener("click", (e) => {
   e.preventDefault();
-  let mensaje = textArea.value.toLowerCase();
-  
+  let mensaje = textArea.value; // No conviertas a minúsculas aún
+
   // Validar antes de encriptar
   if (!validarMensaje(mensaje)) {
     alert("El mensaje solo puede contener letras minúsculas sin acentos ni caracteres especiales.");
     return;
   }
-  
+
+  // Convierte a minúsculas solo si es válido
+  mensaje = mensaje.toLowerCase();
   let mensajeEncriptado = ecriptarmensaje(mensaje);
   resultadoText.textContent = mensajeEncriptado;
   botonCopiar.classList.remove("hidden");
   resultadoTitulo.textContent = "El resultado es:";
 });
 
+
 // Función del botón desencriptar
 botonDesencriptar[1].addEventListener("click", (e) => {
   e.preventDefault();
-  let mensaje = textArea.value.toLowerCase();
-  
+  let mensaje = textArea.value; // No conviertas a minúsculas aún
+
   // Validar antes de desencriptar
   if (!validarMensaje(mensaje)) {
     alert("El mensaje solo puede contener letras minúsculas sin acentos ni caracteres especiales.");
     return;
   }
   
+mensaje = mensaje.toLowerCase();
   let mensajeDesencriptado = desencriptarMensaje(mensaje);
   resultadoText.textContent = mensajeDesencriptado;
   resultadoTitulo.textContent = "El resultado es:";
