@@ -69,14 +69,12 @@ botonEncriptar.addEventListener("click", (e) => {
     return;
   }
 
-  // Convierte a minúsculas solo si es válido
-  mensaje = mensaje.toLowerCase();
-  let mensajeEncriptado = ecriptarmensaje(mensaje);
+  // Si es válido, convertir a minúsculas (aunque ya está en minúsculas)
+  let mensajeEncriptado = ecriptarmensaje(mensaje.toLowerCase());
   resultadoText.textContent = mensajeEncriptado;
   botonCopiar.classList.remove("hidden");
   resultadoTitulo.textContent = "El resultado es:";
 });
-
 
 // Función del botón desencriptar
 botonDesencriptar[1].addEventListener("click", (e) => {
@@ -88,9 +86,8 @@ botonDesencriptar[1].addEventListener("click", (e) => {
     alert("El mensaje solo puede contener letras minúsculas sin acentos ni caracteres especiales.");
     return;
   }
-  
-mensaje = mensaje.toLowerCase();
-  let mensajeDesencriptado = desencriptarMensaje(mensaje);
+
+  let mensajeDesencriptado = desencriptarMensaje(mensaje.toLowerCase());
   resultadoText.textContent = mensajeDesencriptado;
   resultadoTitulo.textContent = "El resultado es:";
   botonCopiar.classList.remove("hidden");
