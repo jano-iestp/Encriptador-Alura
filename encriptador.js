@@ -15,6 +15,13 @@ const llaves = [
   ["o", "ober"],
   ["u", "ufat"],
 ];
+
+// Aquí agregas la función de validación
+function validarMensaje(mensaje) {
+  const regex = /^[a-z\s]*$/; // Solo letras minúsculas y espacios
+  return regex.test(mensaje); // Retorna true si el mensaje es válido
+}
+
 //Funcion para encriptar
 function ecriptarmensaje(mensaje) {
   let mensajeEncriptado = "";
@@ -52,6 +59,13 @@ textArea.addEventListener("input", (e) => {
 botonEncriptar.addEventListener("click", (e) => {
   e.preventDefault();
   let mensaje = textArea.value.toLowerCase();
+  
+  // Validar antes de encriptar
+  if (!validarMensaje(mensaje)) {
+    alert("El mensaje solo puede contener letras minúsculas sin acentos ni caracteres especiales.");
+    return;
+  }
+  
   let mensajeEncriptado = ecriptarmensaje(mensaje);
   resultadoText.textContent = mensajeEncriptado;
   botonCopiar.classList.remove("hidden");
@@ -61,6 +75,13 @@ botonEncriptar.addEventListener("click", (e) => {
 botonDesencriptar[1].addEventListener("click", (e) => {
   e.preventDefault();
   let mensaje = textArea.value.toLowerCase();
+  
+  // Validar antes de desencriptar
+  if (!validarMensaje(mensaje)) {
+    alert("El mensaje solo puede contener letras minúsculas sin acentos ni caracteres especiales.");
+    return;
+  }
+  
   let mensajeDesencriptado = desencriptarMensaje(mensaje);
   resultadoText.textContent = mensajeDesencriptado;
   resultadoTitulo.textContent = "El resultado es:";
