@@ -59,7 +59,7 @@ textArea.addEventListener("input", (e) => {
 //Funcion del boton encriptar
 botonEncriptar.addEventListener("click", (e) => {
   e.preventDefault();
-  let mensaje = textArea.value;
+  let mensaje = textArea.value.toLowerCase();
   
   // Validar antes de encriptar
   if (!validarMensaje(mensaje)) {
@@ -75,7 +75,7 @@ botonEncriptar.addEventListener("click", (e) => {
 
 botonDesencriptar[1].addEventListener("click", (e) => {
   e.preventDefault();
-  let mensaje = textArea.value;
+  let mensaje = textArea.value.toLowerCase();
   
   // Validar antes de desencriptar
   if (!validarMensaje(mensaje)) {
